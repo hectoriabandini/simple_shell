@@ -1,55 +1,81 @@
-#include <stdio.h>
-#include <stdbool.h>
 #include <stdlib.h>
-#include <string.h>
+#include <stdio.h>
 #include <unistd.h>
+#define CMD_BUF_SIZE 1024
+#include <string.h>
 #include <sys/wait.h>
-#define MAX_LEN 100
-/**
- * main - entry point a UNIX command line interpreter.
- * @ child: PID
- * @buff: Buffer to store user input
- * @my_prompt: print a prompt
- * argc: holds the number of command line arguments passed to the program
- * envp: an array of pointers to character strings
- * argv: an array of pointers to character strings
- */
 
-int main(int argc, char **argv, char **envp)
+int main()
 {
-	pid_t child;
-	char buf[MAX_LEN];
+	//Read chars from the stream
+	char *read_chars;
+	//Number of characters read
+	size_t nc_read;
+	//Buffer to be used by getline()
+	size_t init = 0;
+	//loop counters
+	size_t i;
+	//Child process
+	pid_t pid, wpid;
+	//Status of child process
 	int status;
-	const char *my_prompt = "> ";
-
-	while(true)
+	//Path to binary file to be executed
+	char *bin;
+	//tokens to be copied to the command table
+	char *token;
+	//Print sign and read characters from stdin
+	int buffer_s = CMD_BUF_SIZE;
+	while(printf("$") && (nc_read = getline(&read_chars, &init, stdin)) != -1)
 	{
-		printf("%s", my_prompt);
-		fflush(stdout);
-
-		if (fgets(buf, MAX_LEN, stdin) == NULL)
+		//command table
+		char **commands = malloc(buffer_s * sizeof(char *));
+		if (!commands)
 		{
-			break;
-		}
-		buf[strcspn(buf, "\n")] = '\0';
-		child = fork();
-		if (child < 0)
-		{
-			perror("file not found");
+			fprintf(stderr, "Allocation error");
 			exit(EXIT_FAILURE);
 		}
-		else if (child == 0)
+		for (i = 0;;read_chars = NULL, i++)
 		{
-			if (execlp(buf, buf, (char *) NULL) == -1)
+			//Save commands to the command table
+			token = strtok(read_chars, " \t\r\n\a");
+			commands[i] = token;
+			if (commands[i] == NULL)
+				break;
+			//Reallocate to prevent buffer overflow
+			if (i >= buffer_s)
 			{
-				printf("%s: No such file or directory\n", buf);
-				exit(EXIT_FAILURE);
+				buffer_s += CMD_BUF_SIZE;
+				commands = realloc(commands, buffer_s * sizeof(char *));
+				if(!commands)
+				{
+					fprintf(stderr, "Allocation error\n");
+					exit(EXIT_FAILURE);
+				}
 			}
+		}
+		bin = commands[0];
+		//Create child
+		pid = fork();
+		if(pid == 0)
+		{
+			if (execvp(bin, commands) == -1)
+			{
+				perror("ERROR!");
+			};
+			exit(EXIT_FAILURE);
+		} else if(pid < 0)
+		{
+			printf("Child creation failed");
+			exit(EXIT_FAILURE);
 		}
 		else
 		{
-			waitpid(child, &status, 0);
+			do {
+     				 wpid = waitpid(pid, &status, WUNTRACED);
+   			 } while (!WIFEXITED(status) && !WIFSIGNALED(status));
 		}
+		free(read_chars);
+		free(commands);
 	}
 	return (0);
 }
