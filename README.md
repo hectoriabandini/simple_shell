@@ -2,7 +2,7 @@
 
 **By** [__ABUH MOSES__](https://github.com/hectoriabandini) && [**NAMWAMBA MARVIN**](https://github.com/NamwambaMarvin)
 ##### Output
-Unless specified otherwise, your program must have the exact same output as sh (/bin/sh) as well as the exact same error output.
+Unless specified otherwise, your program must have the exact same output as `sh (/bin/sh)` as well as the exact same error output.
 The only difference is when you print an error, the name of th program must be equivalent to your `argv[0]`
 
 #### COMPILER:
@@ -17,25 +17,25 @@ Handle command lines with arguments
 Handle the `PATH`
  - Fork must not be called if the command doesn’t exist
 ### Simple shell 0.3 +
-Implement the exit built-in, that exits the shell
+Implement the `exit` built-in, that exits the shell
 __Usage:__ `exit`
-You don’t have to handle any argument to the built-in exit
+You don’t have to handle any argument to the built-in `exit`
 ### Simple shell 0.4 +
-Implement the env built-in, that prints the current environment
+Implement the `env` built-in, that prints the current environment
 ### Simple shell 0.4 +
-Implement the env built-in, that prints the current environment
+Implement the `env` built-in, that prints the current environment
 ### Simple shell 0.1 +
-Write your own getline function
+Write your own `getline` function
 Use a buffer to read many chars at once and call the least possible the read system call
 You will need to use static variables
 You are not allowed to use `getline`
 ##### You don’t have to:
 be able to move the cursor
 ### Simple shell 0.2 +
-You are not allowed to use strtok
+You are not allowed to use `strtok`
 ### Simple shell 0.4 +
 handle arguments for the built-in `exit`
-**Usage:** exit status, where status is an integer used to exit the shell
+**Usage:** `exit status`, where status is an integer used to exit the shell
 ### Simple shell 1.0 +
 Implement the `setenv` and `unsetenv` builtin commands
 ### setenv
@@ -49,7 +49,7 @@ Should print something on stderr on failure
 ### Simple shell 1.0 +
 Implement the builtin command `cd`:
 - Changes the current directory of the process.
-- Command syntax: `cd` [DIRECTORY]
+- Command syntax: `cd [DIRECTORY]`
 If no argument is given to `cd` the command must be interpreted like `cd $HOME`
 You have to handle the command `cd -`
 You have to update the environment variable `PWD` when you change directory
@@ -62,5 +62,5 @@ Handle the `&&` and `||` shell logical operators
 ### Implement the `alias` builtin command
 **Usage:** ```alias [name[='value'] ...]```
 `alias:` Prints a list of all aliases, one per line, in the form `name='value'`
-`alias name [name2 ...]:` Prints the aliases name, name2, etc 1 per line, in the form name='value'
+`alias name [name2 ...]:` Prints the aliases name, name2, etc 1 per line, in the form `name='value'`
 `alias name='value' [...]:` Defines an alias for each name whose value is given. If name is already an alias, replaces its value with value
