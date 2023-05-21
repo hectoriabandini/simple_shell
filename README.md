@@ -3,7 +3,7 @@
 **By** [__ABUH MOSES__](https://github.com/hectoriabandini) && [**NAMWAMBA MARVIN**](https://github.com/NamwambaMarvin)
 ##### Output
 Unless specified otherwise, your program must have the exact same output as sh (/bin/sh) as well as the exact same error output.
-The only difference is when you print an error, the name of th program must be equivalent to your `<argv[0]>`
+The only difference is when you print an error, the name of th program must be equivalent to your `argv[0]`
 
 #### COMPILER:
 ```gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh```
@@ -22,8 +22,6 @@ __Usage:__ `exit`
 You don’t have to handle any argument to the built-in exit
 ### Simple shell 0.4 +
 Implement the env built-in, that prints the current environment
-### Simple shell 0.4 +
-Implement the env built-in, that prints the current environment
 ### Simple shell 0.1 +
 Write your own getline function
 Use a buffer to read many chars at once and call the least possible the read system call
@@ -35,7 +33,7 @@ be able to move the cursor
 You are not allowed to use strtok
 ### Simple shell 0.4 +
 handle arguments for the built-in `exit`
-**Usage:** exit status, where status is an integer used to exit the shell
+**Usage:** `exit status`, where status is an integer used to exit the shell
 ### Simple shell 1.0 +
 Implement the `setenv` and `unsetenv` builtin commands
 ### setenv
