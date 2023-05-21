@@ -3,7 +3,7 @@
 **By** [__ABUH MOSES__](https://github.com/hectoriabandini) && [**NAMWAMBA MARVIN**](https://github.com/NamwambaMarvin)
 ##### Output
 Unless specified otherwise, your program must have the exact same output as sh (/bin/sh) as well as the exact same error output.
-The only difference is when you print an error, the name of th program must be equivalent to your `<argv[0]>`
+The only difference is when you print an error, the name of th program must be equivalent to your `argv[0]`
 
 #### COMPILER:
 ```gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh```
