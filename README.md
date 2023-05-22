@@ -1,5 +1,5 @@
 # 0x16. C - Simple Shell
-![Project map]()
+![Mind Maps](https://github.com/hectoriabandini/simple_shell/assets/71589771/076335c3-cdd1-495b-aa10-f6c88166e53e)
 
 **By** [__ABUH MOSES__](https://github.com/hectoriabandini) && [**NAMWAMBA MARVIN**](https://github.com/NamwambaMarvin)
 ##### Output
