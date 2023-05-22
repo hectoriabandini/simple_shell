@@ -1,9 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#define CMD_BUF_SIZE 1024
-#include <string.h>
-#include <sys/wait.h>
+#include "ourshell.h"
 
 int main()
 {
@@ -15,12 +10,6 @@ int main()
 	size_t init = 0;
 	//loop counters
 	size_t i;
-	//Child process
-	pid_t pid, wpid;
-	//Status of child process
-	int status;
-	//Path to binary file to be executed
-	char *bin;
 	//tokens to be copied to the command table
 	char *token;
 	//Print sign and read characters from stdin
@@ -53,27 +42,7 @@ int main()
 				}
 			}
 		}
-		bin = commands[0];
-		//Create child
-		pid = fork();
-		if(pid == 0)
-		{
-			if (execvp(bin, commands) == -1)
-			{
-				perror("ERROR!");
-			};
-			exit(EXIT_FAILURE);
-		} else if(pid < 0)
-		{
-			printf("Child creation failed");
-			exit(EXIT_FAILURE);
-		}
-		else
-		{
-			do {
-     				 wpid = waitpid(pid, &status, WUNTRACED);
-   			 } while (!WIFEXITED(status) && !WIFSIGNALED(status));
-		}
+		externals_boiler(commands);
 		free(read_chars);
 		free(commands);
 	}

@@ -1,0 +1,11 @@
+> Handle exit
+> Handle the PATH
+	> Fork must not be called when PATH does not exist
+> Implement env buit-in
+> Handle commandlines with arguments
+
+ORDERED IMPLEMENTATION
+> Handle commandlines with arguments
+> Hanle exit
+> Handle PATH
+> Handle env
