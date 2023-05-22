@@ -1,5 +1,5 @@
 # 0x16. C - Simple Shell
-![Project map](C:\Users\lenovo\Downloads\Mind Maps.jpg)
+![Project map](https://yourimageshare.com/ib/MwYs3kQuF1)
 
 **By** [__ABUH MOSES__](https://github.com/hectoriabandini) && [**NAMWAMBA MARVIN**](https://github.com/NamwambaMarvin)
 ##### Output
