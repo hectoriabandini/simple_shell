@@ -12,14 +12,13 @@ int child_exec(char **commands)
 	int status;
 	/**Child process**/
 
-	pid_t pid, wpid
-		;
+	pid_t wpid,
 	bin = commands[0];
 
 	/**Create child**/
-	pid = fork();
+	wpid = fork();
 	/**externals_boiler(commands);**/
-	if (pid == 0)
+	if (wpid == 0)
 	{
 		if (execvp(bin, commands) == -1)
 		{
@@ -27,7 +26,7 @@ int child_exec(char **commands)
 		};
 		exit(EXIT_FAILURE);
 	}
-	else if (pid < 0)
+	else if (wpid < 0)
 	{
 		printf("Child creation failed");
 		exit(EXIT_FAILURE);
@@ -38,5 +37,5 @@ int child_exec(char **commands)
 			wpid = waitpid(pid, &status, WUNTRACED);
 		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
-	return (1)
+	return (1);
 }
