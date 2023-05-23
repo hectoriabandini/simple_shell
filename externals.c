@@ -10,8 +10,9 @@ int chdr(char **commands)
 	return 1;
 }
 
-int ext(char **commands __attribute__((unused)))
+int ext(char **commands)
 {
+	free(commands);
 	exit(0);
 }
 
