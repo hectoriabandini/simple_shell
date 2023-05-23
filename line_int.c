@@ -23,7 +23,7 @@ int main(void)
 			fprintf(stderr, "Allocation error");
 			exit(EXIT_FAILURE);
 		}
-		for (i = 0; (read_chars = 0); i++)
+		for (i = 0;;read_chars = NULL, i++)
 		{
 			/**Save commands to the command table**/
 			token = strtok(read_chars, " \t\r\n\a");
