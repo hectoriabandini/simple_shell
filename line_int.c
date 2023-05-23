@@ -8,9 +8,9 @@
 int main(void)
 {
 	char *read_chars;
-	size_t nc_read;
+	ssize_t nc_read;
 	size_t init = 0;
-	size_t i;
+	int i;
 	char *token;
 	int buffer_s = CMD_BUF_SIZE;
 
@@ -23,7 +23,7 @@ int main(void)
 			fprintf(stderr, "Allocation error");
 			exit(EXIT_FAILURE);
 		}
-		for (i = 0; read_chars = NULL, i++)
+		for (i = 0; (read_chars = 0); i++)
 		{
 			/**Save commands to the command table**/
 			token = strtok(read_chars, " \t\r\n\a");
