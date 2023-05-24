@@ -98,7 +98,7 @@ int externals_boiler(char **commands, char *argv[])
 	if (command == NULL)
 	{
 		return (1);
-		printf("command does not exist");
+		printf("No such file or directory");
 	}
 
 	for (i = 0; i < ext_count; i++)
