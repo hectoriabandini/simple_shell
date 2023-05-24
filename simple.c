@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
 	char *myfile = argv[0];
 	char **env_list = environ;
 	char *commands[3];
+
 	commands[0] = myfile;
 	commands[1] = "-s";
 	commands[2] = NULL;
