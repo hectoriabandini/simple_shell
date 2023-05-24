@@ -47,7 +47,7 @@ int ext(char **commands)
  * @commands: recieves user commands
  * Return: always success
  */
-int _env(char **commands)
+int _env(__attribute__ ((unused)) char **commands)
 {
 	char **env_list = environ;
 
@@ -74,6 +74,13 @@ int (*externals_exec[])(char **) = {
  */
 int externals_boiler(char **commands, char *argv[])
 {
+	char *externals[] = {
+		"cd",
+		"exit",
+		/*"setenv",*/
+		/*"unsetenv",*/
+		"env"
+	};
 	size_t i;
 	size_t ext_count = sizeof(externals) / sizeof(char *);
 	char *string = commands[2];
@@ -91,7 +98,7 @@ int externals_boiler(char **commands, char *argv[])
 	if (command == NULL)
 	{
 		return (1);
-		prinf("command does not exist");
+		printf("command does not exist");
 	}
 
 	for (i = 0; i < ext_count; i++)

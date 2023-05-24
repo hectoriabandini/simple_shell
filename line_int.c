@@ -6,22 +6,21 @@
  * Return: always success
  */
 
-int main(int argc, char *argv[])
+int main(__attribute__((unused)) int argc, char *argv[])
 {
 	char *read_chars;
 	/**ssize_t nc_read;**/
 	size_t init = 0;
-	int i;
 	char **commands;
 	char *constant = "-c";
 	char *path = "/bin/sh";
-	char *token;
 	int buffer_s = CMD_BUF_SIZE;
+	ssize_t nc_read;
 
 	while (1)
 	{
 		prompt();
-		ssize_t nc_read = getline(&read_chars, &init, stdin);
+		nc_read = getline(&read_chars, &init, stdin);
 
 		if (nc_read == -1)
 		{

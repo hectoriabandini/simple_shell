@@ -15,11 +15,4 @@ int ext(char **commands);
 int externals_boiler(char **commands, char *argv[]);
 int child_exec(char **commands, char *argv[]);
 void prompt(void);
-char *externals[] = {
-	"cd",
-	"exit",
-	/*"setenv",*/
-	/*"unsetenv",*/
-	"env"
-};
 #endif
