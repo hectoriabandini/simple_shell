@@ -20,7 +20,7 @@ int main(__attribute__((unused)) int argc, char *argv[])
 	while (1)
 	{
 		prompt();
-		nc_read = getline(&read_chars, &init, stdin);
+		nc_read = our_getline(&read_chars, &init, stdin);
 
 		if (nc_read == -1)
 		{
