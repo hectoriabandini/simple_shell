@@ -4,5 +4,5 @@
  */
 void prompt(void)
 {
-	fprintf(stdout, "$");
+	fprintf(stdout, "#cisfun$");
 }
