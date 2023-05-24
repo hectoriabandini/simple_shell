@@ -7,7 +7,11 @@
 #include <string.h>
 #include <sys/wait.h>
 #endif
+#ifndef _PROTOTYPES
+#define _PROTOTYPES
 int chdr(char **commands);
 int ext(char **commands);
-int externals_boiler(char **commands);
-int child_exec(char **commands);
+int externals_boiler(char **commands, char *argv[]);
+int child_exec(char **commands, char *argv[]);
+void prompt(void);
+#endif

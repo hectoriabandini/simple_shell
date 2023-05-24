@@ -5,28 +5,33 @@
  * Return: Always success
  */
 
-int child_exec(char **commands)
+int child_exec(char **commands, char *argv[])
 {
 	char *bin = commands[0];
 	int status;
 	pid_t wpid;
+	extern char **environ;
+	char **env_list = environ;
 
 	wpid = fork();
 
 	if (wpid == 0) {
-		if (execvp(bin, commands) == -1) {
-			perror("ERROR!");
+		commands[0] = argv[0];
+		if (execve(bin, commands, env_list) == -1)
+		{
+			exit(EXIT_FAILURE);
 		}
-		exit(EXIT_FAILURE);
+		fflush(stdout);
 	}
 	else if (wpid < 0) {
-		printf("Child creation failed");
+		fprintf(stderr, "Child creation failed\n");
 		exit(EXIT_FAILURE);
 	}
 	else {
 		do {
 			wpid = waitpid(wpid, &status, WUNTRACED);
 		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
+		//waitpid(wpid, &status, 0);
 	}
 
 	return (1);

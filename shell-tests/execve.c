@@ -3,8 +3,10 @@
 #include <unistd.h>
 int main()
 {
-	char *path = "bin/bash";
-	char *const args[] = {path, "echo Hello", NULL};
-	execve(path, args, NULL);
+	char *path = "/bin/bash";
+	extern char **environ;
+	char **env_list = environ;
+	char *const args[] = {path, "-c", "ls -la", NULL};
+	execve(path, args, env_list);
 	return (0);
 }
