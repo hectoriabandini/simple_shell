@@ -39,5 +39,6 @@ int main(__attribute__((unused)) int argc, char *argv[])
 		externals_boiler(commands, argv);
 		free(commands);
 	}
+	free(read_chars);
 	return (0);
 }
