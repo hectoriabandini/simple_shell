@@ -3,7 +3,12 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/wait.h>
-
+/**
+ * main - entry point
+ * @argc: argument count
+ * @argv: argument vector
+ * Return: always success
+ */
 int main(int argc, char *argv[])
 {
 	char *path = "/bin/sh";
@@ -12,6 +17,7 @@ int main(int argc, char *argv[])
 	char *myfile = argv[0];
 	char **env_list = environ;
 	char *commands[] = {myfile, "-s", NULL};
+
 	if (argc == 0)
 	{
 		exit(0);
