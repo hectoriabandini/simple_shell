@@ -9,7 +9,7 @@
  * @argv: argument vector
  * Return: always success
  */
-int _main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	char *path = "/bin/sh";
 	pid_t child;
